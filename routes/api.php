@@ -22,7 +22,8 @@ use Illuminate\Support\Facades\Route;
 // Fetch particular hotel data
 
 Route::get('whattimeisit', [InxaliController::class,'datetime'])->defaults('time','now')
-    ->defaults('timezone','EUROPE/BERLIN');
+    ->defaults('timeParams', ['timezone' => (new DateTime())->getTimezone()->getName()]);
+Route::post('in/', [InxaliController::class,'datetime'])->defaults('time','now');
 Route::get('in/', [InxaliController::class,'timezone']);
-Route::post('in/{timezone}', [InxaliController::class,'datetime'])->defaults('time','now');
+
 Route::get('/{message}', [InxaliController::class,'say']);

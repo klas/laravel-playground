@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreinxaliRequest;
-use App\Http\Requests\UpdateinxaliRequest;
-use App\Models\inxali;
+use DateTime;
+use DateTimeZone;
+use Exception;
+use Illuminate\Http\Request;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class InxaliController extends Controller
 {
@@ -37,9 +40,39 @@ class InxaliController extends Controller
     /**
      * Return the specified time in appropriate timezone
      */
-    public function datetime(string $time, string $timezone = 'EUROPE/BERLIN'): JsonResponse
+    public function datetime(Request $request, string $time, ?array $timeParams = []): JsonResponse
     {
-        $now = new \DateTime($time, new \DateTimeZone($timezone));
+        $timezone = null;
+        $timeParams['timeContinent'] = $timeParams['timeContinent'] ?? 'EUROPE';
+
+        try {
+            if (isset($timeParams['timeZone'])) {
+                $timezone = new DateTimeZone($timeParams['timeZone']);
+            } elseif (isset($timeParams['timeCity'])) {
+                $timezone = new DateTimeZone($timeParams['timeContinent'] . '/' . $timeParams['timeCity']);
+            } elseif ($request->getMethod() == 'POST') {
+                try {
+                    $validated = $request->validate([
+                        'continent' => 'alpha',
+                        'city' => 'required | alpha'
+                    ]);
+                } catch (ValidationException $exception) {
+                    return response()->json([
+                        'message' => 'Error: ' . $exception->getMessage()
+                    ]);
+                }
+
+                $continent = $validated['continent'] ?? $timeParams['timeContinent'];
+                $timezone = new DateTimeZone($continent . '/' . $validated['city']);
+            }
+        } catch (Exception $exception) {
+            return response()->json([
+                'message' => 'Error: ' . $exception->getMessage()
+            ]);
+        }
+
+
+        $now = new DateTime($time, $timezone);
         $nextHour = (int)$now->add(new \DateInterval('PT1H'))->format('h');
 
         $minutesTo = 60 - (int)$now->format('i');
@@ -58,7 +91,8 @@ class InxaliController extends Controller
     public function timezone(): JsonResponse
     {
         return response()->json([
-            'message' => date_default_timezone_get()],
+            'message' => (new DateTime())->getTimezone()->getName()
+        ],
             200
         );
     }
