@@ -62,7 +62,6 @@ class InxaliController extends Controller
                 501);
         }
 
-
         $now = new DateTime($time, $timezone);
         $nextHour = (int)$now->add(new \DateInterval('PT1H'))->format('h');
 
