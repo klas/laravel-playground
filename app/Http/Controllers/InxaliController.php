@@ -59,7 +59,7 @@ class InxaliController extends Controller
             return response()->json([
                 'message' => 'Error: ' . $exception->getMessage()
             ],
-            501);
+                501);
         }
 
 
