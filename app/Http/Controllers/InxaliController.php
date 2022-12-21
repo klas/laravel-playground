@@ -40,35 +40,26 @@ class InxaliController extends Controller
     /**
      * Return the specified time in appropriate timezone
      */
-    public function datetime(Request $request, string $time, ?array $timeParams = []): JsonResponse
+    public function datetime(Request $request): JsonResponse
     {
+        $time = 'now';
         $timezone = null;
-        $timeParams['timeContinent'] = $timeParams['timeContinent'] ?? 'EUROPE';
 
         try {
-            if (isset($timeParams['timeZone'])) {
-                $timezone = new DateTimeZone($timeParams['timeZone']);
-            } elseif (isset($timeParams['timeCity'])) {
-                $timezone = new DateTimeZone($timeParams['timeContinent'] . '/' . $timeParams['timeCity']);
-            } elseif ($request->getMethod() == 'POST') {
-                try {
-                    $validated = $request->validate([
-                        'continent' => 'alpha',
-                        'city' => 'required | alpha'
-                    ]);
-                } catch (ValidationException $exception) {
-                    return response()->json([
-                        'message' => 'Error: ' . $exception->getMessage()
-                    ]);
-                }
+            if ($request->getMethod() == 'POST') {
+                $validated = $request->validate([
+                    'continent' => 'alpha',
+                    'city' => 'required | alpha'
+                ]);
 
-                $continent = $validated['continent'] ?? $timeParams['timeContinent'];
+                $continent = $validated['continent'] ?? 'EUROPE';
                 $timezone = new DateTimeZone($continent . '/' . $validated['city']);
             }
         } catch (Exception $exception) {
             return response()->json([
                 'message' => 'Error: ' . $exception->getMessage()
-            ]);
+            ],
+            501);
         }
 
 

@@ -21,9 +21,8 @@ use Illuminate\Support\Facades\Route;
 
 // Fetch particular hotel data
 
-Route::get('whattimeisit', [InxaliController::class,'datetime'])->defaults('time','now')
-    ->defaults('timeParams', ['timezone' => (new DateTime())->getTimezone()->getName()]);
-Route::post('in/', [InxaliController::class,'datetime'])->defaults('time','now');
+Route::get('whattimeisit', [InxaliController::class,'datetime']);
+Route::post('in/', [InxaliController::class,'datetime']);
 Route::get('in/', [InxaliController::class,'timezone']);
 
 Route::get('/{message}', [InxaliController::class,'say']);
