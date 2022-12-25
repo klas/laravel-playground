@@ -12,6 +12,8 @@ use Illuminate\Validation\ValidationException;
 
 class InxaliController extends Controller
 {
+    public static string $time = 'now';
+
     /**
      * Return the specified message
      */
@@ -21,7 +23,7 @@ class InxaliController extends Controller
 
         switch ($input) {
             case "hello":
-                $message = "Hello";
+                $message = "hello";
                 break;
             case "howareyou":
                 $message = "I'm fine";
@@ -39,10 +41,10 @@ class InxaliController extends Controller
 
     /**
      * Return the specified time in appropriate timezone
+     * @throws Exception
      */
     public function datetime(Request $request): JsonResponse
     {
-        $time = 'now';
         $timezone = null;
 
         try {
@@ -62,7 +64,7 @@ class InxaliController extends Controller
                 501);
         }
 
-        $now = new DateTime($time, $timezone);
+        $now = new DateTime(self::$time, $timezone);
         $nextHour = (int)$now->add(new \DateInterval('PT1H'))->format('h');
 
         $minutesTo = 60 - (int)$now->format('i');
@@ -81,7 +83,7 @@ class InxaliController extends Controller
     public function timezone(): JsonResponse
     {
         return response()->json([
-            'message' => (new DateTime())->getTimezone()->getName()
+            'city' => (new DateTime())->getTimezone()->getName()
         ],
             200
         );
