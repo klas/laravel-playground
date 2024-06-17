@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreActivityRequest;
@@ -16,15 +16,9 @@ class ActivityController extends Controller
      */
     public function index(Request $request)
     {
-    //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+        return ActivityResource::collection(Activity::simplePaginate(
+            $request->integer('perPage', 10)
+        ));
     }
 
     /**
@@ -32,7 +26,9 @@ class ActivityController extends Controller
      */
     public function store(StoreActivityRequest $request)
     {
-        //
+        $activity = Activity::create($request->validated());
+
+        return new ActivityResource($activity);
     }
 
     /**
@@ -44,19 +40,13 @@ class ActivityController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Activity $activity)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(UpdateActivityRequest $request, Activity $activity)
     {
-        //
+        $activity->update($request->validated());
+
+        return new ActivityResource($activity);
     }
 
     /**
@@ -64,6 +54,7 @@ class ActivityController extends Controller
      */
     public function destroy(Activity $activity)
     {
-        //
+        $activity->delete();
+        return response(null, 204);
     }
 }
