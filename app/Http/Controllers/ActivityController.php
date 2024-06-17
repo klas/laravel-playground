@@ -16,7 +16,7 @@ class ActivityController extends Controller
      */
     public function index(Request $request)
     {
-    //
+       echo "test";
     }
 
     /**

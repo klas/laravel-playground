@@ -10,7 +10,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
-class InxaliController extends Controller
+class ExperimentalController extends Controller
 {
     public static string $time = 'now';
 

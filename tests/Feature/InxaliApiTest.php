@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use DateTime;
 use Tests\TestCase;
-use App\Http\Controllers\InxaliController;
+use App\Http\Controllers\ExperimentalController;
 
 class InxaliApiTest extends TestCase
 {
@@ -58,7 +58,7 @@ class InxaliApiTest extends TestCase
 
     public function test_whattimeisit()
     {
-        InxaliController::$time = '2010-01-28T15:00:00+02:00';
+        ExperimentalController::$time = '2010-01-28T15:00:00+02:00';
 
         $response = $this->get('/api/whattimeisit')
             ->assertStatus(200)
@@ -68,7 +68,7 @@ class InxaliApiTest extends TestCase
                 ]
             );
 
-        InxaliController::$time = 'now';
+        ExperimentalController::$time = 'now';
     }
 
     public function test_in()
@@ -84,7 +84,7 @@ class InxaliApiTest extends TestCase
 
     public function test_in_post()
     {
-        InxaliController::$time = '2010-01-28T15:10:00';
+        ExperimentalController::$time = '2010-01-28T15:10:00';
 
         $response = $this->post('/api/in', ['continent' => 'Europe', 'city' => 'Berlin'])
             ->assertStatus(200)
@@ -94,6 +94,6 @@ class InxaliApiTest extends TestCase
                 ]
             );
 
-        InxaliController::$time = 'now';
+        ExperimentalController::$time = 'now';
     }
 }
