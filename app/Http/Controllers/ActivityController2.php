@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreActivityRequest;
-use App\Http\Requests\UpdateActivityRequest;
-use App\Models\Activity;
+use Illuminate\Http\Request;
 
-class ActivityControllerBasic extends Controller
+class ActivityController2 extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +25,7 @@ class ActivityControllerBasic extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreActivityRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -35,7 +33,7 @@ class ActivityControllerBasic extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Activity $activity)
+    public function show(string $id)
     {
         //
     }
@@ -43,7 +41,7 @@ class ActivityControllerBasic extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Activity $activity)
+    public function edit(string $id)
     {
         //
     }
@@ -51,7 +49,7 @@ class ActivityControllerBasic extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateActivityRequest $request, Activity $activity)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -59,7 +57,7 @@ class ActivityControllerBasic extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Activity $activity)
+    public function destroy(string $id)
     {
         //
     }
