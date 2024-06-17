@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class FitnessSeeder extends Seeder
+class ActivitySeeder extends Seeder
 {
     /**
      * Run the database seeds.

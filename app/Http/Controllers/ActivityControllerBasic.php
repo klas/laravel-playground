@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFitnessRequest;
-use App\Http\Requests\UpdateFitnessRequest;
-use App\Models\Fitness;
+use App\Http\Requests\StoreActivityRequest;
+use App\Http\Requests\UpdateActivityRequest;
+use App\Models\Activity;
 
-class FitnessController extends Controller
+class ActivityControllerBasic extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +27,7 @@ class FitnessController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreFitnessRequest $request)
+    public function store(StoreActivityRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class FitnessController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Fitness $fitness)
+    public function show(Activity $activity)
     {
         //
     }
@@ -43,7 +43,7 @@ class FitnessController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Fitness $fitness)
+    public function edit(Activity $activity)
     {
         //
     }
@@ -51,7 +51,7 @@ class FitnessController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateFitnessRequest $request, Fitness $fitness)
+    public function update(UpdateActivityRequest $request, Activity $activity)
     {
         //
     }
@@ -59,7 +59,7 @@ class FitnessController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Fitness $fitness)
+    public function destroy(Activity $activity)
     {
         //
     }

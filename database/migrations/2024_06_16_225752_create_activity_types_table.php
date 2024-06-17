@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\User;
 
 return new class extends Migration
 {
@@ -12,13 +11,9 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fitnesses', function (Blueprint $table) {
+        Schema::create('activity_types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
-            $table->string('title');
-            $table->string('description');
-            $table->integer('status');
-            $table->foreignIdFor(User::class);
+            $table->string('name');
         });
     }
 
@@ -27,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fitnesses');
+        Schema::dropIfExists('activity_types');
     }
 };
