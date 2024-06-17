@@ -15,7 +15,7 @@ Route::get('/user', function (Request $request) {
 Route::get('whattimeisit', [ExperimentalController::class,'datetime']);
 Route::post('in/', [ExperimentalController::class,'datetime']);
 Route::get('in/', [ExperimentalController::class,'timezone']);
-Route::get('/{message}', [ExperimentalController::class,'say']);
+Route::get('say/{message}', [ExperimentalController::class,'say']);
 
 // Activity
 

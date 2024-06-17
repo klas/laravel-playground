@@ -16,12 +16,9 @@ class ActivityController extends Controller
      */
     public function index(Request $request)
     {
-        /*return ActivityResource::collection(Activity::simplePaginate(
-            $request->integer('perPage', 10),
-            '*'
-        ));*/
-
-        return ActivityResource::collection(Activity::all());
+        return ActivityResource::collection(Activity::simplePaginate(
+            $request->integer('perPage', 10)
+        ));
     }
 
     /**
