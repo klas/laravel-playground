@@ -21,7 +21,6 @@ class ActivityController extends Controller
             '*'
         ));*/
 
-        return ['test'];
         return ActivityResource::collection(Activity::all());
     }
 

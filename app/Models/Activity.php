@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Activity
- * 
+ *
  * @property int $id
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
@@ -24,8 +24,23 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $finish
  * @property int $status
  * @property int $user_id
- *
  * @package App\Models
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereActivityTypeId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereDescription($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereDistance($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereDistanceUnitId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereFinish($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereStart($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereStatus($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Activity whereUserId($value)
+ * @mixin \Eloquent
  */
 class Activity extends Model
 {
