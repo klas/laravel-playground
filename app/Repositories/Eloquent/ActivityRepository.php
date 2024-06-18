@@ -6,7 +6,6 @@ use App\Models\Activity;
 use App\Repositories\ActivityRepositoryInterface;
 use Illuminate\Contracts\Pagination\Paginator;
 use Illuminate\Support\Collection;
-use TimWassenburg\RepositoryGenerator\Repository\BaseRepository;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -28,6 +27,9 @@ class ActivityRepository implements ActivityRepositoryInterface
         return $this->model->create($attributes);
     }
 
+    /*
+    * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
+     */
     public function find(int $id, array $with = [], array $params = []): ?Model
     {
         return $this->model->with($with)->findOrFail($id);
