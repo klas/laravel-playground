@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fb76583afabf28e5bdd7f99a2663504",
+    "content-hash": "756c6beb6c8c3b066d942177d91a6306",
     "packages": [
         {
             "name": "brick/math",
@@ -6374,56 +6374,6 @@
             "time": "2020-07-09T08:09:16+00:00"
         },
         {
-            "name": "jason-guru/laravel-make-repository",
-            "version": "0.0.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jason-guru/laravel-make-repository.git",
-                "reference": "693d3d189c0b19262a896eb888c3a7b870a2de43"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jason-guru/laravel-make-repository/zipball/693d3d189c0b19262a896eb888c3a7b870a2de43",
-                "reference": "693d3d189c0b19262a896eb888c3a7b870a2de43",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "JasonGuru\\LaravelMakeRepository\\RepositoryServiceProvider"
-                    ]
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "JasonGuru\\LaravelMakeRepository\\": "src/"
-                },
-                "classmap": [
-                    "src/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "G Jason Sharma",
-                    "email": "g.jason.sharma@gmail.com"
-                }
-            ],
-            "description": "A simple package to create a make:repository command for Laravel 5+",
-            "support": {
-                "issues": "https://github.com/jason-guru/laravel-make-repository/issues",
-                "source": "https://github.com/jason-guru/laravel-make-repository/tree/0.0.3"
-            },
-            "time": "2020-10-24T13:21:42+00:00"
-        },
-        {
             "name": "laravel/pint",
             "version": "v1.16.0",
             "source": {
@@ -9026,6 +8976,63 @@
                 }
             ],
             "time": "2024-03-03T12:36:25+00:00"
+        },
+        {
+            "name": "timwassenburg/laravel-repository-generator",
+            "version": "v1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timwassenburg/laravel-repository-generator.git",
+                "reference": "05e0688b4a7070749f10a9f4af9510c7bca47c33"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timwassenburg/laravel-repository-generator/zipball/05e0688b4a7070749f10a9f4af9510c7bca47c33",
+                "reference": "05e0688b4a7070749f10a9f4af9510c7bca47c33",
+                "shasum": ""
+            },
+            "require-dev": {
+                "laravel/pint": "^1.10",
+                "nunomaduro/larastan": "^2.0",
+                "orchestra/testbench": "^8.5",
+                "pestphp/pest": "^2.5"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TimWassenburg\\RepositoryGenerator\\RepositoryGeneratorServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TimWassenburg\\RepositoryGenerator\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tim Wassenburg"
+                }
+            ],
+            "description": "Generate Laravel repositories",
+            "homepage": "https://github.com/timwassenburg/laravel-repository-generator",
+            "keywords": [
+                "artisan",
+                "cli",
+                "generator",
+                "laravel",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/timwassenburg/laravel-repository-generator/issues",
+                "source": "https://github.com/timwassenburg/laravel-repository-generator/tree/v1.0.3"
+            },
+            "time": "2023-04-27T11:06:12+00:00"
         }
     ],
     "aliases": [],
