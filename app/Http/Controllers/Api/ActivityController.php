@@ -16,7 +16,7 @@ use Illuminate\Routing\ResponseFactory;
 class ActivityController extends Controller
 {
     protected const FILTERS = [
-            'activity_type' => 'integer',
+            'activity_type_id' => 'integer',
     ];
 
     public function __construct(protected ActivityRepositoryInterface $activityRepository)
@@ -28,19 +28,15 @@ class ActivityController extends Controller
      */
     public function index(Request $request)
     {
-        $activities = $this->activityRepository->simplePaginate(
-            $request->integer('perPage', 10)
-        );
-
-        $filteredRequests = [];
+        $activities = $this->activityRepository->all();
 
         foreach (self::FILTERS as $parameter => $type) {
             if ($request->filled($parameter)) {
-                $filteredRequests[$parameter] = $request->$type($parameter);
+                $activities->where($parameter, '==', $request->$type($parameter));
             }
         }
 
-        return ActivityResource::collection($activities);
+        return ActivityResource::collection($activities->paginate($request->integer('perPage', 10)));
     }
 
     /**

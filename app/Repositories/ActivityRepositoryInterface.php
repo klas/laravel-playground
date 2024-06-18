@@ -17,7 +17,4 @@ interface ActivityRepositoryInterface
     public function update(int $id, array $attributes): ?Model;
 
     public function all(): Collection;
-
-    public function simplePaginate(?int $perPage = null, ?array $columns = ['*'], ?string $pageName = 'page',
-        ?int $page = null): Paginator;
 }
