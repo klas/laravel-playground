@@ -18,6 +18,8 @@ return new class extends Migration
                 ->on('activity_types')->onUpdate('CASCADE')->onDelete('RESTRICT');
             $table->foreign(['distance_unit_id'], 'distance_unit_rel')->references(['id'])
                 ->on('distance_units')->onUpdate('CASCADE')->onDelete('RESTRICT');
+            $table->foreign(['user_id'], 'user_rel')->references(['id'])
+                ->on('users')->onUpdate('CASCADE')->onDelete('CASCADE');
         });
     }
 

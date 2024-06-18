@@ -1,12 +1,9 @@
 <?php
 
-/**
- * Created by Reliese Model.
- */
-
 namespace App\Models;
 
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -26,6 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $user_id
  * @property ActivityType $activity_type
  * @property DistanceUnit $distance_unit
+ * @property User $user
  * @package App\Models
  * @method static \Illuminate\Database\Eloquent\Builder|Activity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Activity newQuery()
@@ -46,6 +44,8 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Activity extends Model
 {
+    use HasFactory;
+
 	protected $table = 'activities';
 
 	protected $casts = [
@@ -78,5 +78,10 @@ class Activity extends Model
 	public function distance_unit()
 	{
 		return $this->belongsTo(DistanceUnit::class);
+	}
+
+	public function user()
+	{
+		return $this->belongsTo(User::class);
 	}
 }

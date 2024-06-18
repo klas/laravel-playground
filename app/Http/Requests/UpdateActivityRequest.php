@@ -22,7 +22,15 @@ class UpdateActivityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required',
+            'description' => 'required',
+            'activity_type_id' => 'required',
+            'distance' => 'required',
+            'distance_unit_id' => 'required',
+            'start' => 'required',
+            'finish' => 'required',
+            'status' => 'required',
+            'user_id' => 'required'
         ];
     }
 }
