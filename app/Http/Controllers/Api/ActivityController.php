@@ -15,6 +15,9 @@ use Illuminate\Routing\ResponseFactory;
 
 class ActivityController extends Controller
 {
+    protected const FILTERS = [
+            'activity_type' => 'integer',
+    ];
 
     public function __construct(protected ActivityRepositoryInterface $activityRepository)
     {
@@ -25,9 +28,19 @@ class ActivityController extends Controller
      */
     public function index(Request $request)
     {
-        return ActivityResource::collection($this->activityRepository->simplePaginate(
+        $activities = $this->activityRepository->simplePaginate(
             $request->integer('perPage', 10)
-        ));
+        );
+
+        $filteredRequests = [];
+
+        foreach (self::FILTERS as $parameter => $type) {
+            if ($request->filled($parameter)) {
+                $filteredRequests[$parameter] = $request->$type($parameter);
+            }
+        }
+
+        return ActivityResource::collection($activities);
     }
 
     /**
@@ -43,8 +56,10 @@ class ActivityController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Activity $activity): JsonResource
+    public function show(int $id): JsonResource
     {
+        $activity = $this->activityRepository->find($id);
+
         return new ActivityResource($activity);
     }
 
@@ -61,9 +76,9 @@ class ActivityController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request): Response|ResponseFactory
+    public function destroy(int $id): Response|ResponseFactory
     {
-        $this->activityRepository->delete($request->integer('id'));
+        $this->activityRepository->delete($id);
 
         return response(null, 204);
     }

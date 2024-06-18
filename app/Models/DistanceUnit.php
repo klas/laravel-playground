@@ -6,6 +6,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -13,7 +14,9 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @property int $id
  * @property string $name
+ * @property Collection|Activity[] $activities
  * @package App\Models
+ * @property-read int|null $activities_count
  * @method static \Illuminate\Database\Eloquent\Builder|DistanceUnit newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DistanceUnit newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|DistanceUnit query()
@@ -29,4 +32,9 @@ class DistanceUnit extends Model
 	protected $fillable = [
 		'name'
 	];
+
+	public function activities()
+	{
+		return $this->hasMany(Activity::class);
+	}
 }

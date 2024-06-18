@@ -24,6 +24,8 @@ use Illuminate\Database\Eloquent\Model;
  * @property Carbon $finish
  * @property int $status
  * @property int $user_id
+ * @property ActivityType $activity_type
+ * @property DistanceUnit $distance_unit
  * @package App\Models
  * @method static \Illuminate\Database\Eloquent\Builder|Activity newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Activity newQuery()
@@ -67,4 +69,14 @@ class Activity extends Model
 		'status',
 		'user_id'
 	];
+
+	public function activity_type()
+	{
+		return $this->belongsTo(ActivityType::class);
+	}
+
+	public function distance_unit()
+	{
+		return $this->belongsTo(DistanceUnit::class);
+	}
 }
