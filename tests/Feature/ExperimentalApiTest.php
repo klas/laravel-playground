@@ -8,7 +8,7 @@ use DateTime;
 use Tests\TestCase;
 use App\Http\Controllers\ExperimentalController;
 
-class InxaliApiTest extends TestCase
+class ExperimentalApiTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -25,7 +25,7 @@ class InxaliApiTest extends TestCase
 
     public function test_say_hello()
     {
-        $response = $this->get('/api/hello')
+        $response = $this->get('/api/say/hello')
             ->assertStatus(200)
             ->assertJson(
                 [
@@ -36,7 +36,7 @@ class InxaliApiTest extends TestCase
 
     public function test_say_howareyou()
     {
-        $response = $this->get('/api/howareyou')
+        $response = $this->get('/api/say/howareyou')
             ->assertStatus(200)
             ->assertJson(
                 [
@@ -47,7 +47,7 @@ class InxaliApiTest extends TestCase
 
     public function test_say_invalid()
     {
-        $response = $this->get('/api/invalid')
+        $response = $this->get('/api/say/invalid')
             ->assertStatus(501)
             ->assertJson(
                 [

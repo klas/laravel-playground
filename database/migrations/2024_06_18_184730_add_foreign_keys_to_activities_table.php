@@ -30,8 +30,10 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::table('ausschuettungsquote', function (Blueprint $table) {
-            $table->dropForeign('bonusart_rel');
+        Schema::table('activities', function (Blueprint $table) {
+            $table->dropForeign('activity_type_rel');
+            $table->dropForeign('distance_unit_rel');
+            $table->dropForeign('user_rel');
         });
     }
 };
