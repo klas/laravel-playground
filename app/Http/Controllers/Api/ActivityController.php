@@ -62,9 +62,9 @@ class ActivityController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateActivityRequest $request): JsonResource
+    public function update(int $id, UpdateActivityRequest $request): JsonResource
     {
-        $activity = $this->activityRepository->update($request->integer('id'), $request->validated());
+        $activity = $this->activityRepository->update($id, $request->validated());
 
         return new ActivityResource($activity);
     }

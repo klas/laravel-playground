@@ -55,6 +55,27 @@ class ActivityApiTest extends TestCase
             );
     }
 
+    public function testUpdateReturnsValidData()
+    {
+        $activity = Activity::factory()->createOne();
+        $responseData = (new ActivityResource($activity))->resolve();
+        $updateData = [
+            'name' => $this->faker->sentence(3),
+            'description' => $this->faker->sentence(6),
+            'distance' =>  (float)$this->faker->numberBetween(1, 77)
+        ];
+
+        $response = $this->put("/api/activities/$activity->id", $updateData);
+        $response->dump();
+
+        $response->assertStatus(Response::HTTP_OK);
+        $response->assertJson(
+            [
+                'data' => array_merge($responseData, $updateData)
+            ]
+        );
+    }
+
     public function testShowReturnsValidData()
     {
         $activity = Activity::factory()->createOne();

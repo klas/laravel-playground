@@ -29,7 +29,7 @@ class ActivityRepository implements ActivityRepositoryInterface
 
     /*
     * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
-     */
+    */
     public function find(int $id, array $with = [], array $params = []): ?Model
     {
         return $this->model->with($with)->findOrFail($id);
@@ -40,11 +40,15 @@ class ActivityRepository implements ActivityRepositoryInterface
         return $this->model::query()->find($id)->delete();
     }
 
+    /*
+    * @throws \Illuminate\Database\Eloquent\ModelNotFoundException<\Illuminate\Database\Eloquent\Model>
+    */
     public function update(int $id, array $attributes): ?Model
     {
         $model = $this->find($id);
+        $status = $model->update($attributes);
 
-        return $model->update($attributes);
+        return $status ? $model : null;
     }
 
     public function simplePaginate(
