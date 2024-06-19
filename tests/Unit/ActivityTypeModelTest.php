@@ -19,18 +19,14 @@ class ActivityTypeModelTest extends TestCase
 
     public function testInsert()
     {
-        $activityType = ActivityType::create([
-            'name' => 'testActivityType'
-        ]);
+        $activityType = ActivityType::factory()->createOne();
 
         $this->assertModelExists($activityType);
     }
 
     public function testDelete()
     {
-        $activityType = ActivityType::create([
-            'name' => 'testActivityType2'
-        ]);
+        $activityType = ActivityType::factory()->createOne();
 
         $activityType->delete();
 

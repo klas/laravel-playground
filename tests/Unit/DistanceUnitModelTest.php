@@ -19,18 +19,14 @@ class DistanceUnitModelTest extends TestCase
 
     public function testInsert()
     {
-        $distanceUnit = DistanceUnit::create([
-            'name' => 'testDistanceUnit'
-        ]);
+        $distanceUnit = DistanceUnit::factory()->createOne();
 
         $this->assertModelExists($distanceUnit);
     }
 
     public function testDelete()
     {
-        $distanceUnit = DistanceUnit::create([
-            'name' => 'testDistanceUnit'
-        ]);
+        $distanceUnit = DistanceUnit::factory()->createOne();
 
         $distanceUnit->delete();
 
