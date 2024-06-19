@@ -22,7 +22,7 @@ class ActivityFactory extends Factory
             'name' => $this->faker->sentence(3),
             'description' => $this->faker->sentence(6),
             'activity_type_id' => $this->faker->numberBetween(1, 4),
-            'distance' =>  $this->faker->numberBetween(1, 77),
+            'distance' =>  (float)$this->faker->numberBetween(1, 77),
             'distance_unit_id' => $this->faker->numberBetween(1, 2),
             'start' => $start,
             'finish' => $this->faker->dateTimeInInterval($start, '+5 hours'),

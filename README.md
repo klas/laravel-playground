@@ -7,3 +7,6 @@
 * Copy env file: `cp .env.example .env`
 * Start container: `vendor/bin/sail up -d`
 * Run Migrations and Seeders: `vendor/bin/sail artisan migrate:fresh --seed`
+
+## Testing
+* Run tests `vendor/bin/sail artisan test`
