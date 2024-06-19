@@ -50,13 +50,4 @@ class ActivityRepository implements ActivityRepositoryInterface
 
         return $status ? $model : null;
     }
-
-    public function simplePaginate(
-        ?int $perPage = null,
-        ?array $columns = ['*'],
-        ?string $pageName = 'page',
-        ?int $page = null
-    ): Paginator {
-        return $this->model->simplePaginate($perPage, $columns, $pageName, $page);
-    }
 }
