@@ -13,7 +13,7 @@ class ActivityCollection extends ResourceCollection
 {
     public ?Collection $total_distance = null;
 
-    public ?Carbon $total_time = null;
+    public ?string $total_time = null;
 
     /**
      * Transform the resource collection into an array.

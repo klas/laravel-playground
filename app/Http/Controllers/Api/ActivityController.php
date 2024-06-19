@@ -45,6 +45,7 @@ class ActivityController extends Controller
         $data = (new ActivityCollection($activities->paginate($request->integer('perPage', 10), null,
             $request->integer('page', 1))->withQueryString()));
         $data->total_distance = $this->distanceCalculatorService->sumPerUnit($activities);
+        $data->total_time = $this->timeCalculatorService->sumTimes($activities);
 
         return $data;
     }
