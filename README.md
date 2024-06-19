@@ -7,6 +7,17 @@
 * Copy env file: `cp .env.example .env`
 * Start container: `vendor/bin/sail up -d`
 * Run Migrations and Seeders: `vendor/bin/sail artisan migrate:fresh --seed`
+* Publish API: `vendor/bin/sail artisan install:api`
+
+## Frontend
+http://localhost/activities
+
+## REST API
+* Index: GET http://localhost/api/activities
+* Store: POST http://localhost/api/activities
+* Show: GET http://localhost/api/activities/{activity}
+* Update: PUT/PATCH http://localhost/api/activities/{activity}
+* Destroy: DELETE http://localhost/api/activities/{activity}
 
 ## Testing
 * Run tests `vendor/bin/sail artisan test`

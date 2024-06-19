@@ -9,6 +9,7 @@ use App\Http\Requests\UpdateActivityRequest;
 use App\Http\Resources\ActivityCollection;
 use App\Http\Resources\ActivityResource;
 use App\Models\Activity;
+use App\Models\ActivityType;
 use App\Repositories\ActivityRepositoryInterface;
 use App\Services\DistanceCalculatorServiceInterface;
 use App\Services\TimeCalculatorServiceInterface;
@@ -35,6 +36,7 @@ class ActivityController extends Controller
     public function index(Request $request)
     {
         $activities = $this->activityRepository->all();
+        $activitiesUnfiltered = clone $activities;
 
         $this->simpleWhereFilter($request, $activities);
 
@@ -43,6 +45,7 @@ class ActivityController extends Controller
             $request->integer('page', 1))->withQueryString();
         $data['total_distance'] = $this->distanceCalculatorService->sumPerUnit($activities);
         $data['total_time'] = $this->timeCalculatorService->sumTimes($activities);
+        $data['activity_types'] = $activitiesUnfiltered->pluck('activity_type')->unique()->flatten();
 
         return view('activities.index', $data);
     }
