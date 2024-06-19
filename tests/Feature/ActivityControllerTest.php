@@ -15,7 +15,7 @@ class ActivityControllerTest extends TestCase
 {
     public function testIndexReturnsDataInValidFormat()
     {
-        $this->get('/api/activities')
+        $this->get('/api/activities?user_id=1')
             ->assertStatus(200)
             ->assertJsonStructure(
                 [
