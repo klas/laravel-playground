@@ -6,7 +6,10 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Http\Resources\ActivityResource;
+use App\Http\Resources\ActivityCollection;
 use App\Repositories\ActivityRepositoryInterface;
+use App\Services\DistanceCalculatorServiceInterface;
+use App\Services\TimeCalculatorServiceInterface;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
@@ -19,9 +22,11 @@ class ActivityController extends Controller
             'user_id' => 'integer',
     ];
 
-    public function __construct(protected ActivityRepositoryInterface $activityRepository)
-    {
-    }
+    public function __construct(
+        protected ActivityRepositoryInterface $activityRepository,
+        protected DistanceCalculatorServiceInterface $distanceCalculatorService,
+        protected TimeCalculatorServiceInterface $timeCalculatorService
+    ) {}
 
     /**
      * Display a listing of the resource.
@@ -36,7 +41,7 @@ class ActivityController extends Controller
             }
         }
 
-        return ActivityResource::collection($activities->paginate($request->integer('perPage', 10))->withQueryString());
+        return new ActivityCollection($activities->paginate($request->integer('perPage', 10))->withQueryString());
     }
 
     /**

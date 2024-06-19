@@ -4,7 +4,7 @@ namespace Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 
-class ActivityControllerTest extends TestCase
+class DistanceCalculatorServiceTest extends TestCase
 {
     /**
      * A basic unit test example.

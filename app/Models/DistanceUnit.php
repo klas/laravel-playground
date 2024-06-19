@@ -37,4 +37,14 @@ class DistanceUnit extends Model
 	{
 		return $this->hasMany(Activity::class);
 	}
+
+    /**
+     * Convert the model to its string representation.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
