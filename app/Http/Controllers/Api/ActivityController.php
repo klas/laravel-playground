@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Helpers\ControllerHelper;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
@@ -23,6 +24,8 @@ class ActivityController extends Controller
             'user_id' => 'integer',
     ];
 
+    use ControllerHelper;
+
     public function __construct(
         protected ActivityRepositoryInterface $activityRepository,
         protected DistanceCalculatorServiceInterface $distanceCalculatorService,
@@ -36,11 +39,7 @@ class ActivityController extends Controller
     {
         $activities = $this->activityRepository->all();
 
-        foreach (self::FILTERS as $parameter => $type) {
-            if ($request->filled($parameter)) {
-                $activities = $activities->whereStrict($parameter, $request->$type($parameter));
-            }
-        }
+        $this->simpleWhereFilter($request, $activities);
 
         $data = (new ActivityCollection($activities->paginate($request->integer('perPage', 10), null,
             $request->integer('page', 1))->withQueryString()));

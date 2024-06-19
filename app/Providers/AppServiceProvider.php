@@ -7,6 +7,7 @@ use App\Services\DistanceCalculatorServiceInterface;
 use App\Services\TimeCalculatorService;
 use App\Services\TimeCalculatorServiceInterface;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\ServiceProvider;
 
@@ -35,6 +36,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        Paginator::useBootstrapFive();
+
         /**
          * Paginate a standard Laravel Collection.
          *
