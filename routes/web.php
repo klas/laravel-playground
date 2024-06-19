@@ -7,4 +7,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('activities', ActivityController::class);
+Route::resource('activities', ActivityController::class)->only(['index']);
