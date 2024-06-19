@@ -8,23 +8,16 @@ use Illuminate\Support\Collection;
 
 class TimeCalculatorService implements TimeCalculatorServiceInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
 
     public function sumTimes(
         Collection $summableItems,
         string $startProperty = 'start',
-        string $endProperty = 'end'
+        string $endProperty = 'finish'
     ): ?string {
         $sum = 0;
 
         $summableItems->each(function ($item, $key) use ($startProperty, $endProperty, &$sum) {
-            $sum += Carbon::parse($item->$endProperty)->diffInSeconds(Carbon::parse($item->$startProperty));
+            $sum += Carbon::parse($item[$endProperty])->diffInSeconds(Carbon::parse($item[$startProperty]));
         });
 
         $options = [

@@ -7,14 +7,6 @@ use Illuminate\Support\Collection;
 
 class DistanceCalculatorService implements DistanceCalculatorServiceInterface
 {
-    /**
-     * Create a new class instance.
-     */
-    public function __construct()
-    {
-        //
-    }
-
     public function sumPerUnit(
         Collection $summableItems,
         string $distanceProperty = 'distance',

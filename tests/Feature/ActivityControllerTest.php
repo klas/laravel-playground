@@ -66,7 +66,6 @@ class ActivityControllerTest extends TestCase
         ];
 
         $response = $this->put("/api/activities/$activity->id", $updateData);
-        $response->dump();
 
         $response->assertStatus(Response::HTTP_OK);
         $response->assertJson(

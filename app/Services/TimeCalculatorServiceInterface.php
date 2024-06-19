@@ -9,5 +9,5 @@ interface TimeCalculatorServiceInterface {
     public function sumTimes(
         Collection $summableItems,
         string $startProperty = 'start',
-        string $endProperty = 'end'): ?string;
+        string $endProperty = 'finish'): ?string;
 }
