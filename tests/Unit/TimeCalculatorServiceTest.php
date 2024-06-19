@@ -3,7 +3,7 @@
 namespace Tests\Unit;
 
 use App\Services\TimeCalculatorService;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class TimeCalculatorServiceTest extends TestCase
 {

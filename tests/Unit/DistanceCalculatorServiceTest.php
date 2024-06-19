@@ -6,7 +6,7 @@ use App\Services\DistanceCalculatorService;
 use App\Services\DistanceCalculatorServiceInterface;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\App;
-use PHPUnit\Framework\TestCase;
+use Tests\TestCase;
 
 class DistanceCalculatorServiceTest extends TestCase
 {
