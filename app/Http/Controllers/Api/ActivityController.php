@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Routing\ResponseFactory;
+use Illuminate\Support\Facades\App;
 
 class ActivityController extends Controller
 {
@@ -41,7 +42,11 @@ class ActivityController extends Controller
             }
         }
 
-        return new ActivityCollection($activities->paginate($request->integer('perPage', 10))->withQueryString());
+        $data = (new ActivityCollection($activities->paginate($request->integer('perPage', 10), null,
+            $request->integer('page', 1))->withQueryString()));
+        $data->total_distance = $this->distanceCalculatorService->sumPerUnit($activities);
+
+        return $data;
     }
 
     /**
