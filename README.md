@@ -13,6 +13,8 @@
 http://localhost/activities
 
 ## REST API
+To getcorreclty formated JSON response including error messages, you must send `Accept: application/json` request header.
+
 * Index: GET http://localhost/api/activities
 * Store: POST http://localhost/api/activities
 * Show: GET http://localhost/api/activities/{activity}
