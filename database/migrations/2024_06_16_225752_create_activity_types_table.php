@@ -8,24 +8,20 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('inxalis', function (Blueprint $table) {
+        Schema::create('activity_types', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
         });
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('inxalis');
+        Schema::dropIfExists('activity_types');
     }
 };

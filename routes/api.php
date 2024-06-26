@@ -1,28 +1,22 @@
 <?php
 
-use App\Http\Controllers\InxaliController;
+use App\Http\Controllers\Api\ActivityController;
+use App\Http\Controllers\ExperimentalController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
-
-/*Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('/user', function (Request $request) {
     return $request->user();
-});*/
+})->middleware('auth:sanctum');
 
-// Fetch particular hotel data
 
-Route::get('whattimeisit', [InxaliController::class,'datetime']);
-Route::post('in/', [InxaliController::class,'datetime']);
-Route::get('in/', [InxaliController::class,'timezone']);
+// Experimental
 
-Route::get('/{message}', [InxaliController::class,'say']);
+Route::get('whattimeisit', [ExperimentalController::class,'datetime']);
+Route::post('in/', [ExperimentalController::class,'datetime']);
+Route::get('in/', [ExperimentalController::class,'timezone']);
+Route::get('say/{message}', [ExperimentalController::class,'say']);
+
+// Activity
+
+Route::apiResource('activities', ActivityController::class);
