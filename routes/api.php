@@ -12,10 +12,13 @@ Route::get('/user', function (Request $request) {
 
 // Experimental
 
-Route::get('whattimeisit', [ExperimentalController::class,'datetime']);
-Route::post('in/', [ExperimentalController::class,'datetime']);
-Route::get('in/', [ExperimentalController::class,'timezone']);
-Route::get('say/{message}', [ExperimentalController::class,'say']);
+Route::prefix('experimental')->group(function () {
+    Route::get('whattimeisit', [ExperimentalController::class,'datetime']);
+    Route::post('in/', [ExperimentalController::class,'datetime']);
+    Route::get('in/', [ExperimentalController::class,'timezone']);
+    Route::get('say/{message}', [ExperimentalController::class,'say']);
+});
+
 
 // Activity
 
