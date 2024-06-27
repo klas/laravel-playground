@@ -9,17 +9,24 @@
 * Run Migrations and Seeders: `vendor/bin/sail artisan migrate:fresh --seed`
 * Publish API: `vendor/bin/sail artisan install:api`
 
-## Frontend
-http://localhost/activities
 
 ## REST API
 To getcorreclty formated JSON response including error messages, you must send `Accept: application/json` request header.
 
-* Index: GET http://localhost/api/activities
-* Store: POST http://localhost/api/activities
-* Show: GET http://localhost/api/activities/{activity}
-* Update: PUT/PATCH http://localhost/api/activities/{activity}
-* Destroy: DELETE http://localhost/api/activities/{activity}
+##### Activities REST API
+* Index: GET /api/activities
+* Store: POST /api/activities
+* Show: GET /api/activities/{activity}
+* Update: PUT/PATCH /api/activities/{activity}
+* Destroy: DELETE /api/activities/{activity}
+
+
+##### Experimental API
+Various unsorted experimental endpoints
+* Get /api/experimental/whattimeisit
+* Post: /api/experimental/in
+* Get: /api/experimental/in - get local time
+* Get /api/experimental/say/{message} -get time is specified location ˙with POST parameters continent and city ['continent' => 'Europe', 'city' => 'Berlin']
 
 ## Testing
 * Run tests `vendor/bin/sail artisan test`

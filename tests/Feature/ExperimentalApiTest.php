@@ -10,22 +10,10 @@ use App\Http\Controllers\ExperimentalController;
 
 class ExperimentalApiTest extends TestCase
 {
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function test_example()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
 
     public function test_say_hello()
     {
-        $response = $this->get('/api/say/hello')
+        $response = $this->get('/api/experimental/say/hello')
             ->assertStatus(200)
             ->assertJson(
                 [
@@ -36,7 +24,7 @@ class ExperimentalApiTest extends TestCase
 
     public function test_say_howareyou()
     {
-        $response = $this->get('/api/say/howareyou')
+        $response = $this->get('/api/experimental/say/howareyou')
             ->assertStatus(200)
             ->assertJson(
                 [
@@ -47,7 +35,7 @@ class ExperimentalApiTest extends TestCase
 
     public function test_say_invalid()
     {
-        $response = $this->get('/api/say/invalid')
+        $response = $this->get('/api/experimental/say/invalid')
             ->assertStatus(501)
             ->assertJson(
                 [
@@ -60,7 +48,7 @@ class ExperimentalApiTest extends TestCase
     {
         ExperimentalController::$time = '2010-01-28T15:00:00+02:00';
 
-        $response = $this->get('/api/whattimeisit')
+        $response = $this->get('/api/experimental/whattimeisit')
             ->assertStatus(200)
             ->assertJson(
                 [
@@ -73,7 +61,7 @@ class ExperimentalApiTest extends TestCase
 
     public function test_in()
     {
-        $response = $this->get('/api/in')
+        $response = $this->get('/api/experimental/in')
             ->assertStatus(200)
             ->assertJson(
                 [
@@ -86,7 +74,7 @@ class ExperimentalApiTest extends TestCase
     {
         ExperimentalController::$time = '2010-01-28T15:10:00';
 
-        $response = $this->post('/api/in', ['continent' => 'Europe', 'city' => 'Berlin'])
+        $response = $this->post('/api/experimental/in', ['continent' => 'Europe', 'city' => 'Berlin'])
             ->assertStatus(200)
             ->assertJson(
                 [
