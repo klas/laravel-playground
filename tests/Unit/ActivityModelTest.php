@@ -5,7 +5,9 @@ namespace Tests\Unit;
 use App\Models\Activity;
 use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
+use PHPUnit\Framework\Attributes\CoversClass;
 
+#[CoversClass(Activity::class)]
 class ActivityModelTest extends TestCase
 {
     public function testExpectedColumns()

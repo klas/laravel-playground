@@ -16,6 +16,18 @@
         <include>
             <directory>app</directory>
         </include>
+        <exclude>
+        <file>./app/Http/Middleware/Authenticate.php</file>
+        <file>./app/Http/Middleware/RedirectIfAuthenticated.php</file>
+        <file>./app/Http/Middleware/TrustHosts.php</file>
+        <file>./app/Http/Middleware/TrustProxies.php</file>
+        <file>./app/Providers/BroadcastServiceProvider.php</file>
+        <file>./app/Providers/EventServiceProvider.php</file>
+        <file>./app/Providers/HorizonServiceProvider.php</file>
+        <file>./app/Providers/TelescopeServiceProvider.php</file>
+        <file>./app/Providers/AuthServiceProvider.php</file>
+        <file>./app/Providers/RouteServiceProvider.php</file>
+        </exclude>
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>

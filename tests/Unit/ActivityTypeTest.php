@@ -6,8 +6,12 @@ use App\Models\ActivityType;
 use Illuminate\Support\Facades\Schema;
 use Tests\TestCase;
 
-class ActivityTypeModelTest extends TestCase
+/*
+ * @doesNotPerformAssertions
+ */
+class ActivityTypeTest extends TestCase
 {
+
     public function testExpectedColumns()
     {
         $this->assertTrue(
@@ -17,17 +21,19 @@ class ActivityTypeModelTest extends TestCase
         );
     }
 
+
     public function testInsert()
     {
-        $activityType = ActivityType::factory()->createOne();
+        //$activityType = ActivityType::factory()->createOne();
+        $activityType = ActivityType::create(['name' => 'abc123']);
 
         $this->assertModelExists($activityType);
+        $this->assertEquals('abc123', $activityType->name);
     }
 
     public function testDelete()
     {
         $activityType = ActivityType::factory()->createOne();
-
         $activityType->delete();
 
         $this->assertModelMissing($activityType);

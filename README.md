@@ -11,7 +11,7 @@
 
 
 ## REST API
-To getcorreclty formated JSON response including error messages, you must send `Accept: application/json` request header.
+To get correclty formated JSON response including error messages, you must send `Accept: application/json` request header.
 
 ##### Activities REST API
 * Index: GET /api/activities
