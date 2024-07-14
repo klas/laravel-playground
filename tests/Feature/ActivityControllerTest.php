@@ -1,5 +1,6 @@
 <?php
 
+namespace Tests\Feature;
 
 use App\Http\Resources\ActivityResource;
 use App\Models\Activity;

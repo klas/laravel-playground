@@ -81,6 +81,7 @@ class ActivityController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * @throws \Exception
      */
     public function destroy(int $id): Response|ResponseFactory
     {

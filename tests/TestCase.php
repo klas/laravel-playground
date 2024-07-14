@@ -15,9 +15,7 @@ abstract class TestCase extends BaseTestCase {
 
     use CreatesApplication, DatabaseMigrations, WithFaker;
 
-    public function setUp()
-    : void {
-
+    public function setUp(): void {
         parent::setUp();
         Artisan::call('migrate:refresh --seed');
     }
